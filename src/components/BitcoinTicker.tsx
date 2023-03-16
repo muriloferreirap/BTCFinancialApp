@@ -19,7 +19,7 @@ const BitcoinTicker = () => {
 
   useInterval(() => {
     fetchTicker();
-  }, 5000);
+  }, 10000);
 
   const formattedValue = buy.toLocaleString("pt-br", {
     style: "currency",
@@ -28,7 +28,7 @@ const BitcoinTicker = () => {
 
   return (
     <div className="container">
-      <h1 className="title">Preço do Bitcoin</h1>
+      <h1 className="title">Bitcoin</h1>
       <p className="buy-price">{formattedValue}</p>
     </div>
   );
