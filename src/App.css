@@ -1,0 +1,9 @@
+.container-app {
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}

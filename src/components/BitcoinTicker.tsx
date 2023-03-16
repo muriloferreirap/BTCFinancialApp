@@ -3,14 +3,14 @@ import axios from "axios";
 import { useInterval } from "use-interval";
 import "./BitcoinTicker.css";
 
-const BitcoinTicker = () => {
+const BitcoinTicker = (props: any) => {
   const [buy, setBuy] = useState(0);
 
   const fetchTicker = async () => {
     const response = await axios.get(
       "https://api.coingecko.com/api/v3/exchange_rates/"
     );
-    setBuy(response.data.rates.brl.value);
+    setBuy(response.data.rates[props.rate].value);
   };
 
   useEffect(() => {
@@ -21,15 +21,15 @@ const BitcoinTicker = () => {
     fetchTicker();
   }, 10000);
 
-  const formattedValue = buy.toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
-
   return (
     <div className="container">
-      <h1 className="title">Bitcoin</h1>
-      <p className="buy-price">{formattedValue}</p>
+      <h1 className="title">{props.title}</h1>
+      <p className="buy-price">
+        {buy.toLocaleString(props.locale, {
+          style: "currency",
+          currency: props.currency,
+        })}
+      </p>
     </div>
   );
 };
