@@ -18,7 +18,6 @@ const BitcoinTicker = () => {
   }, []);
 
   useInterval(() => {
-    console.log(buy);
     fetchTicker();
   }, 5000);
 
